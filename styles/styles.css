@@ -1,0 +1,130 @@
+html, body {
+  font-family: "Varela Round", sans-serif;
+  color: #4e4e4e;
+}
+
+.btn {
+  font-family: "Varela Round", sans-serif;
+  border: none;
+  padding: 7px;
+  border-radius: 2px;
+  cursor: pointer;
+  min-width: 75px;
+}
+
+.btn-1 {
+  background: #03A9F4;
+  color: #fff;
+}
+
+.btn-1:hover {
+  background: #35c0ff;
+}
+
+.btn-2 {
+  background: #ff796f;
+  color: #fff;
+}
+
+.btn-2:hover {
+  background: #ff9088;
+}
+
+.table-1 {
+  width: 100%;
+}
+
+.table-1 th {
+  border-bottom: 3px solid #4caf50;
+}
+
+.table-1 tbody tr {
+  text-align: center;
+}
+
+.table-1 td {
+  padding: 4px 0 4px 0;
+  font-size: 13px;
+}
+
+.table-1 td {
+  border-bottom: 1px solid #ddd;
+}
+
+.table-2 td:first-child {
+  padding-right: 25px;
+  border-right: 1px solid #ddd;
+}
+
+.table-2 tr td:first-child::after {
+  content: ':';
+}
+
+.table-2 tr td:nth-child(2) {
+  padding: 0 0 0 10px;
+}
+
+.table-2 {
+  border-bottom: 2px solid #4caf50;
+  padding: 0 0 5px 0;
+  margin: 0 0 5px 0;
+}
+
+.header {
+  padding: 2px 0 10px 0;
+  margin: -13px -8px 5px -8px;
+}
+
+.header .user {
+  float: right;
+  line-height: 61px;
+  padding-right: 7px;
+}
+
+.account-container {
+  display: inline-block;
+  margin: 0 0 0 25px;
+}
+
+.budget-container {
+  display: inline-block;
+  box-shadow: 0 1px 10px #ddd;
+  transition: 0.3s;
+  width: 180px;
+  text-align: center;
+  padding: 10px 5px 5px 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.budget-container:hover {
+  box-shadow: 0 1px 10px #ababab;
+}
+
+.budget-label {
+  padding: 2px 16px;
+}
+
+.toolbar {
+  padding: 3px 0 3px 0;
+}
+
+.toolbar button, .toolbar .fake-link {
+  margin: 5px 2px;
+}
+
+.fake-link {
+  cursor: pointer;
+  color: #008eff;
+}
+
+.header .logo {
+  font-family: 'Pacifico', cursive;
+  font-size: 30px;
+  padding: 0 30px 0 30px;
+}
+
+.page {
+  box-shadow: 0 1px 10px #ddd;
+  padding: 25px;
+}
