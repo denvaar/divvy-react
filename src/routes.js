@@ -5,6 +5,7 @@ import TopNav from './components/topNav';
 import Accounts from './containers/accounts';
 import Transactions from './containers/Transactions';
 import Budgets from './containers/Budgets';
+import NotFound from './components/notFound';
 
 
 export default (
@@ -12,5 +13,6 @@ export default (
     <IndexRoute component={Accounts} />
     <Route path="/transactions" component={Transactions} />
     <Route path="/budgets" component={Budgets} />
+    <Route path="*" component={NotFound} />
   </Route>
 );
