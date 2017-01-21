@@ -2,7 +2,7 @@ import React from 'react';
 
 import SideNav from '../components/sideNav';
 
-
+const isAuthenticated = false;
 const TopNav = (props) => {
   const menuItems = [
     {label: 'Accounts', route: '/'},
@@ -15,11 +15,13 @@ const TopNav = (props) => {
     <div>
       <div className="header">
         <span className="logo">Divvy</span>
-        <span className="user">
-          <i className="fa fa-cogs fake-link" aria-hidden="true"></i>
-          &nbsp;&nbsp;|&nbsp;&nbsp;Denver | <span className="fake-link">logout</span>          </span>
+        {isAuthenticated ? 
+          <span className="user">
+            <i className="fa fa-cogs fake-link" aria-hidden="true"></i>
+            &nbsp;&nbsp;|&nbsp;&nbsp;Denver | <span className="fake-link">logout</span>          </span>
+        : null}
       </div>
-      <SideNav menuItems={menuItems} />
+      {isAuthenticated ? <SideNav menuItems={menuItems} /> : null}
       {props.children}
     </div>
   ); 

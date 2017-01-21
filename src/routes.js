@@ -1,16 +1,18 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import TopNav from './components/topNav';
 import Accounts from './containers/accounts';
-import Transactions from './containers/Transactions';
 import Budgets from './containers/Budgets';
+import Login from './components/login';
 import NotFound from './components/notFound';
+import TopNav from './components/topNav';
+import Transactions from './containers/Transactions';
 
 
 export default (
   <Route path="/" component={TopNav}>
-    <IndexRoute component={Accounts} />
+    <IndexRoute component={Login} />
+    <route path="/accounts" component={Accounts} />
     <Route path="/transactions" component={Transactions} />
     <Route path="/budgets" component={Budgets} />
     <Route path="*" component={NotFound} />
