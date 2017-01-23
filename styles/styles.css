@@ -204,7 +204,7 @@ html, body {
 
 .input-group > input[type="text"],
 .input-group > input[type="password"] {
-  width: 150px;
+  width: 180px;
   height: 25px;
   padding-left: 7px;
   font-size: 14px;
@@ -242,9 +242,26 @@ html, body {
 }
 
 .login-form-container input[type="submit"] {
-  width: 160px;
+  width: 190px;
 }
 
-.login-form-container form {
+.login-form-container form,
+.create-account-form-container form {
   padding-top: 25px;
+}
+
+.create-account-form-container {
+  background: #fff;
+  margin: auto;
+  width: 300px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  height: 260px;
+  box-shadow: 0 1px 10px #ddd;
 }
