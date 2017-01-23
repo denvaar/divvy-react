@@ -9,6 +9,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const USER_RETRIEVED = 'USER_RETRIEVED';
+export const USER_CREATION_FAILURE = 'USER_CREATION_FAILURE';
+export const USER_CREATED = 'USER_CREATED';
 
 export const requestToken = (props) => {
   return dispatch => {
@@ -43,6 +45,21 @@ export const fetchUser = (token) => {
   }
 }
 
+export const createUser = (data) => {
+  return dispatch => {
+    console.log(data);
+    return axios.post(`${apiBase}/accounts/users/create`, data).then(response => {
+      if (response.status === 201) {
+        dispatch(userCreated());
+      } else {
+        dispatch(userCreationFailure(response));
+      }
+    }).catch(error => {
+      dispatch(userCreationFailure(error));
+    });
+  }
+}
+
 const loginSuccess = () => {
   return {type: LOGIN_SUCCESS};
 }
@@ -52,6 +69,19 @@ const loginFailure = (error) => {
   console.log(error.response.data.errors)
   return {
     type: LOGIN_FAILURE,
+    errors: Object.values(error.response.data.errors)
+  };
+}
+
+const userCreated = () => {
+  return {
+    type: USER_CREATED
+  };
+}
+
+const userCreationFailure = (error) => {
+  return {
+    type: USER_CREATION_FAILURE,
     errors: Object.values(error.response.data.errors)
   };
 }

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { requestToken, fetchUser } from '../actions/authActions';
+import {
+  requestToken,
+  fetchUser,
+  createUser,
+} from '../actions/authActions';
 
 
 class LoginForm extends Component {
@@ -57,7 +61,7 @@ class AccountCreateForm extends Component {
             <input type='text' ref='lastName' placeholder='Last Name' />
           </div> 
           <div className="input-group">
-            <input type='text' ref='username' placeholder='Username' />
+            <input type='text' ref='email' placeholder='Email' />
           </div> 
           <div className="input-group"> 
             <input type='password' ref='password' placeholder='Password' />
@@ -70,7 +74,7 @@ class AccountCreateForm extends Component {
               type="submit"
               className="submit-button" 
               value="Create Account"
-              onClick={this.props.onSubmit} />
+              onClick={(event) => this.props.onSubmit(event, this.refs.email.value, this.refs.password.value, this.refs.firstName.value, this.refs.lastName.value)} />
           </div> 
         </form>
         <div className="form-error">{this.props.errors}</div>
@@ -80,6 +84,7 @@ class AccountCreateForm extends Component {
 }
 
 
+/* TODO make this a true container component */
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -87,11 +92,22 @@ class Login extends Component {
       create: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleAccountCreate = this.handleAccountCreate.bind(this);
   }
 
   handleClick(event, username, password) {
     event.preventDefault();
     this.props.onLoginSubmit({username: username, password: password});
+  }
+
+  handleAccountCreate(event, email, password, firstName, lastName) {
+    event.preventDefault();
+    this.props.onAccountCreate({
+      email: email,
+      first_name: firstName,
+      last_name: lastName,
+      password: password,
+    });
   }
 
   render() {
@@ -104,7 +120,7 @@ class Login extends Component {
             errors={this.props.errors} />
           :
           <AccountCreateForm
-            onSubmit={() => console.log('create account')} />
+            onSubmit={this.handleAccountCreate} />
         }
       </div>
     );
@@ -121,6 +137,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onLoginSubmit: (creds) => {
       dispatch(requestToken(creds));
+    },
+    onAccountCreate: (creds) => {
+      dispatch(createUser(creds));
     }
   }
 }

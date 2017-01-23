@@ -241,7 +241,8 @@ html, body {
   font-size: 10px;
 }
 
-.login-form-container input[type="submit"] {
+.login-form-container input[type="submit"],
+.create-account-form-container input[type="submit"] {
   width: 190px;
 }
 
