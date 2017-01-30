@@ -14,8 +14,8 @@ export default (
   <Route path="/" component={TopNav}>
     <IndexRoute component={Login} />
     <route path="/accounts" component={RequireAuth(Accounts)} />
-    <Route path="/transactions" component={Transactions} />
-    <Route path="/budgets" component={Budgets} />
+    <Route path="/transactions" component={RequireAuth(Transactions)} />
+    <Route path="/budgets" component={RequireAuth(Budgets)} />
     <Route path="*" component={NotFound} />
   </Route>
 );

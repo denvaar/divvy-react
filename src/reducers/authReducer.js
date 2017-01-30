@@ -16,7 +16,9 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case USER_RETRIEVED:
       return {
         ...state,
-        authenticated: true
+        authenticated: true,
+        email: action.email,
+        name: action.name
       };
     case LOGIN_FAILURE:
       return {

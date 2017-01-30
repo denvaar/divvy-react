@@ -17,11 +17,9 @@ export const requestToken = (props) => {
     return axios.post(`${apiBase}/accounts/sessions`, props).then(response => {
       if (response.status === 201) {
         storage.setKey(response.data.jwt);
-        dispatch(loginSuccess());
+        dispatch(loginSuccess(response));
         browserHistory.push('/accounts');
       } else {
-
-        console.log('here')
         dispatch(loginFailure(response));
       }
     }).catch(error => {
@@ -60,8 +58,11 @@ export const createUser = (data) => {
   }
 }
 
-const loginSuccess = () => {
-  return {type: LOGIN_SUCCESS};
+const loginSuccess = (response) => {
+  return {
+    type: LOGIN_SUCCESS,
+    name: `${response.data.first_name} ${response.data.last_name}`
+  };
 }
 
 const loginFailure = (error) => {
@@ -70,6 +71,20 @@ const loginFailure = (error) => {
   return {
     type: LOGIN_FAILURE,
     errors: Object.values(error.response.data.errors)
+  };
+}
+
+export const logout = () => {
+  return (dispatch) => {
+    storage.setKey();
+    dispatch(logoutSuccess());
+    browserHistory.push("/");
+  };
+}
+
+const logoutSuccess = () => {
+  return {
+    type: LOGOUT_SUCCESS
   };
 }
 
@@ -88,5 +103,8 @@ const userCreationFailure = (error) => {
 
 const userRetrieved = (response) => {
   console.log(response);
-  return {type: USER_RETRIEVED};
+  return {
+    type: USER_RETRIEVED,
+    name: `${response.data.first_name} ${response.data.last_name}`
+  };
 }

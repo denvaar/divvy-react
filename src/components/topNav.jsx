@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { logout } from '../actions/authActions';
 import SideNav from '../components/sideNav';
 
-const isAuthenticated = false;
 const TopNav = (props) => {
   const menuItems = [
-    {label: 'Accounts', route: '/'},
+    {label: 'Accounts', route: '/accounts'},
     {label: 'Budgets', route: '/budgets'},
     {label: 'Transactions', route: '/transactions'},
     {label: 'Tools', route: '/tools'},
@@ -15,16 +16,31 @@ const TopNav = (props) => {
     <div>
       <div className="header">
         <span className="logo">Divvy</span>
-        {isAuthenticated ? 
+        {props.authenticated ? 
           <span className="user">
             <i className="fa fa-cogs fake-link" aria-hidden="true"></i>
-            &nbsp;&nbsp;|&nbsp;&nbsp;Denver | <span className="fake-link">logout</span>          </span>
+            &nbsp;&nbsp;|&nbsp;&nbsp;{props.user} | <span className="fake-link" onClick={() => props.logout()}>logout</span>          </span>
         : null}
       </div>
-      {isAuthenticated ? <SideNav menuItems={menuItems} /> : null}
+      {props.authenticated ? <SideNav menuItems={menuItems} /> : null}
       {props.children}
     </div>
   ); 
 }
 
-export default TopNav;
+const mapStateToProps = (state) => {
+  return {
+    authenticated: state.authReducer.authenticated,
+    user: state.authReducer.name
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => {
+      dispatch(logout());
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopNav);
