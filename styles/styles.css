@@ -143,7 +143,7 @@ html, body {
   color: #fff;
   text-align: center;
   font-size: 100px;
-  background: #90c492;
+  background: #2196F3;
 }
 
 .sidenav-container {
@@ -169,7 +169,7 @@ html, body {
 }
 
 .sidenav-container > div:hover {
-  background: rgb(0, 142, 255);
+  background: #2196F3;
 }
 
 .menu-icon {
@@ -199,6 +199,10 @@ html, body {
 
 .input-group {
   margin: 0 0 10px 0;
+}
+
+.input-group label {
+  display: block;
 }
 
 .input-group > input[type="text"],

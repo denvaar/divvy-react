@@ -1,47 +1,54 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { fetchTransactions } from '../actions/transactionActions';
+import storage from '../utils/localStorageUtils';
 import TransactionList from '../components/transactionList';
 
 
-const rows = [
-  {
-    'date': '2017-01-01',
-    'amount': '$20.00',
-    'type': 'Debit',
-    'name': 'Sunrise Cyclery',
-    'budget': 'Bikes',
-  },
-  {
-    'date': '2017-01-02',
-    'amount': '$2.98',
-    'type': 'Debit',
-    'name': 'Charlee\'s Ice Cream',
-    'budget': 'Food',
-  },
-  {
-    'date': '2017-01-02',
-    'amount': '$10.35',
-    'type': 'Debit',
-    'name': 'Pizza Hut',
-    'budget': 'Food',
-  },
-  {
-    'date': '2017-01-03',
-    'amount': '$100.00',
-    'type': 'Credit',
-    'name': 'Transfer',
-    'budget': '--',
-  },
-];
 
-export default class Transactions extends Component {
+const mapTransactions = (transactions) => {
+  return transactions.map(obj => {
+    return {
+      date: obj.created,
+      amount: obj.amount,
+      type: obj.transaction_type,
+      name: obj.name,
+      budget: 'TODO',
+    };
+  });
+}
+
+class Transactions extends Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    const token = storage.get('auth-token');
+    this.props.fetchTransactions(token);
+  }
+
   render() {
+    console.log(this.props.transactions); 
     return (
-      <TransactionList rows={rows} />
+      <TransactionList rows={mapTransactions(this.props.transactions)} />
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    transactions: state.transactionReducer.transactions
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTransactions: (token) => {
+      dispatch(fetchTransactions(token));
+    }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Transactions);
