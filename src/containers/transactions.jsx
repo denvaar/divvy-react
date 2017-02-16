@@ -14,7 +14,7 @@ const mapTransactions = (transactions) => {
       amount: obj.amount,
       type: obj.transaction_type,
       name: obj.name,
-      budget: 'TODO',
+      budget: '---',
     };
   });
 }
