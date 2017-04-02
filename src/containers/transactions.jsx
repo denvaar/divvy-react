@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchTransactions } from '../actions/transactionActions';
+import { fetchTransactions, updateTransaction } from '../actions/transactionActions';
 import storage from '../utils/localStorageUtils';
-import TransactionList from '../components/transactionList';
+import TransactionCategorizer from '../components/transactionList';
 
 
 
 const mapTransactions = (transactions) => {
   return transactions.map(obj => {
     return {
+      id: obj.id,
+      ofxId: obj.ofx_id,
       date: obj.created,
       amount: obj.amount,
       type: obj.transaction_type,
@@ -30,9 +32,10 @@ class Transactions extends Component {
   }
 
   render() {
-    console.log(this.props.transactions); 
     return (
-      <TransactionList rows={mapTransactions(this.props.transactions)} />
+      <TransactionCategorizer
+        updateTransaction={(id, data) => this.props.updateTransaction(storage.get('auth-token'), id, data)}
+        transactions={mapTransactions(this.props.transactions.filter(t => !t.ignore))} />
     );
   }
 }
@@ -47,6 +50,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchTransactions: (token) => {
       dispatch(fetchTransactions(token));
+    },
+    updateTransaction: (token, id, data) => {
+      dispatch(updateTransaction(token, id, data));
     }
   };
 }
