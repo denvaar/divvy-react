@@ -28,6 +28,7 @@ export const updateTransaction = (token, id, data) => {
       }
     };
     return axios.patch(`${apiBase}/budgets/transaction/${id}/update`, data, config).then(response => {
+      console.log(data, response.data);
       dispatch(updateTransactionAction(id, response.data));
     }).catch(error => {
 

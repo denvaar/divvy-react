@@ -2,23 +2,8 @@ import React, { Component } from 'react';
 
 import { formatDate } from 'utils/utils';
 
-import Table from './table';
+//import Table from './table';
 
-
-const tableColumns = [
-  {'title': 'Date', 'dataKey': 'date'},
-  {'title': 'Amount', 'dataKey': 'amount'},
-  {'title': 'Type', 'dataKey': 'type'},
-  {'title': 'Name', 'dataKey': 'name'},
-  {'title': 'Budget', 'dataKey': 'budget'},
-]
-
-const cardButton = {
-  width: "100%",
-  textTransform: "uppercase",
-  borderRadius: "0",
-  height: "40px"
-};
 
 class TransactionCategorizer extends Component {
   
@@ -57,15 +42,16 @@ class TransactionCategorizer extends Component {
                       <option>Foodball</option>
                     </select>
                     <button
-                      className="btn"
-                      style={{...cardButton, color: "#c8e7ff", background: "#0090ff"}}>
+                      className="btn card-button"
+                      style={{color: "#c8e7ff", background: "#0090ff"}}
+                      onClick={() => this.props.updateTransaction(this.state.transactions[0].id, { budgets: [1] })}>
                       <div>
                         <i className="fa fa-2x fa-pie-chart"></i> <span>Categorize</span>
                       </div>
                     </button>
                     <button
-                      className="btn"
-                      style={{...cardButton, color: "#99afba", background: "#3d5e6e"}}
+                      className="btn card-button"
+                      style={{color: "#99afba", background: "#3d5e6e"}}
                       onClick={() => this.props.updateTransaction(this.state.transactions[0].id, { ignore: true })}>
                       <div>
                         <i className="fa fa-2x fa-eye-slash"></i> <span>Ignore</span>
@@ -84,6 +70,13 @@ class TransactionCategorizer extends Component {
   }
 }
 
+const tableColumns = [
+  {'title': 'Date', 'dataKey': 'date'},
+  {'title': 'Amount', 'dataKey': 'amount'},
+  {'title': 'Type', 'dataKey': 'type'},
+  {'title': 'Name', 'dataKey': 'name'},
+  {'title': 'Budget', 'dataKey': 'budget'},
+]
 
 const TransactionList = ({ rows }) => {
   return (

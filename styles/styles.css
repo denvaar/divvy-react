@@ -342,3 +342,10 @@ html, body {
   text-align: center;
   background: #F44336;
 }
+
+.card-button {
+  width: 100%;
+  text-transform: uppercase;
+  border-radius: 0;
+  height: 40px;
+}
