@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
   entry: './src/index.js',
@@ -8,7 +9,10 @@ module.exports = {
     //publicPath: 'http://localhost:3000',
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      utils: path.resolve(__dirname, 'src', 'utils')
+    }
   },
   module: {
     loaders: [

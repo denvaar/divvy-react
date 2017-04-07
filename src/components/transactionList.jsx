@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { formatDate } from 'utils/utils';
+
 import Table from './table';
 
 
@@ -10,15 +12,6 @@ const tableColumns = [
   {'title': 'Name', 'dataKey': 'name'},
   {'title': 'Budget', 'dataKey': 'budget'},
 ]
-
-const card = {
-  background: "#fff",
-  padding: "5px",
-  height: "180px",
-  textAlign: "center",
-  fontSize: "10px"
-};
-
 
 const cardButton = {
   width: "100%",
@@ -49,25 +42,34 @@ class TransactionCategorizer extends Component {
           if (this.state.transactions.length > 0) {
             return (
               <div>
-                <div>{this.state.transactions.length}</div>
+                <div className="notification">{this.state.transactions.length}</div>
                 <div style={{width: "200px", boxShadow: "0 1px 10px #888888", margin: "5px"}}>
-                  <div style={card}>
-                    <div>{this.state.transactions[0].date}</div>
-                    <div>{this.state.transactions[0].name}</div>
-                    <div>{this.state.transactions[0].type}</div>
-                    <div>${this.state.transactions[0].amount}</div>
+                  <div className="card">
+                    <div className="info-text date-text">{formatDate(this.state.transactions[0].date)}</div>
+                    <div className="info-text title-text">{this.state.transactions[0].name}</div>
+                    <div className="info-text amount-text">${this.state.transactions[0].amount}</div>
+                    <div className="info-text type-text">{this.state.transactions[0].type}</div>
                   </div>
                   <div>
+                    <select className="select">
+                      <option>Basketball</option>
+                      <option>Football</option>
+                      <option>Foodball</option>
+                    </select>
                     <button
                       className="btn"
                       style={{...cardButton, color: "#c8e7ff", background: "#0090ff"}}>
-                      Categorize
+                      <div>
+                        <i className="fa fa-2x fa-pie-chart"></i> <span>Categorize</span>
+                      </div>
                     </button>
                     <button
                       className="btn"
                       style={{...cardButton, color: "#99afba", background: "#3d5e6e"}}
                       onClick={() => this.props.updateTransaction(this.state.transactions[0].id, { ignore: true })}>
-                      Ignore
+                      <div>
+                        <i className="fa fa-2x fa-eye-slash"></i> <span>Ignore</span>
+                      </div>
                     </button>
                   </div>
                 </div>
