@@ -4,13 +4,14 @@ import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import logger from 'redux-logger';
 
 import reducers from './reducers';
 import routes from './routes';
 import '../styles/styles.css';
 
 const createStoreWithMiddleware = compose(
-  applyMiddleware(thunkMiddleware),
+  applyMiddleware(logger, thunkMiddleware),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 )(createStore);
 

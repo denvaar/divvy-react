@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchTransactions, updateTransaction } from '../actions/transactionActions';
+import { fetchBudgets } from '../actions/budgetActions';
+import {
+  fetchTransactions,
+  updateTransaction,
+  categorizeTransaction,
+} from '../actions/transactionActions';
 import storage from '../utils/localStorageUtils';
 import TransactionCategorizer from '../components/transactionList';
 
@@ -24,35 +29,60 @@ const mapTransactions = (transactions) => {
 class Transactions extends Component {
   constructor(props) {
     super(props);
+    this.authToken = storage.get('auth-token');
   }
 
   componentDidMount() {
-    const token = storage.get('auth-token');
-    this.props.fetchTransactions(token);
+    this.props.fetchTransactions(this.authToken);
+    this.props.fetchBudgets(this.authToken);
   }
 
   render() {
+    const uncategorizedTransactions = mapTransactions(
+      this.props.transactions.filter(t => !t.ignore && !t.categorized)
+    );
     return (
-      <TransactionCategorizer
-        updateTransaction={(id, data) => this.props.updateTransaction(storage.get('auth-token'), id, data)}
-        transactions={mapTransactions(this.props.transactions.filter(t => !t.ignore))} />
+      <div>
+        {this.props.isFetching ?
+          <p>loading...</p>
+        :
+          <TransactionCategorizer
+            budgets={this.props.budgets}
+            transactions={uncategorizedTransactions}
+            categorizeTransaction={(id, data) => this.props.categorizeTransaction(this.authToken, id, data)}
+            updateTransaction={(id, data) => this.props.updateTransaction(this.authToken, id, data)} />
+        }
+      </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  const { transactions } = state.transactionReducer;
+  const { budgets } = state.budgetReducer;
+  
   return {
-    transactions: state.transactionReducer.transactions
+    isFetching:
+      state.transactionReducer.isFetching &&
+      state.budgetReducer.isFetching,
+    transactions,
+    budgets
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchBudgets: (token) => {
+      dispatch(fetchBudgets(token));
+    },
     fetchTransactions: (token) => {
       dispatch(fetchTransactions(token));
     },
     updateTransaction: (token, id, data) => {
       dispatch(updateTransaction(token, id, data));
+    },
+    categorizeTransaction: (token, id, data) => {
+      dispatch(categorizeTransaction(token, id, data));
     }
   };
 }
