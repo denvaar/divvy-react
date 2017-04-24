@@ -1,0 +1,184 @@
+.green-1-bg {
+  background: #639a65;
+}
+
+.sticky-bottom {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+}
+
+.chop {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.budget-container {
+  width: 130px;
+  height: 130px;
+  box-shadow: 0 1px 10px #ddd;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.budget-container:hover {
+  background: aliceblue;
+}
+
+.select {
+  width: 100%;
+}
+
+.header {
+  background: #2196f3;
+  color: #fff;
+  padding: 20px 0 20px 0;
+}
+
+.list-item-container {
+  min-height: 70px;
+}
+
+.list-item-clickable {
+  cursor: pointer;
+}
+
+.list-item-clickable:hover {
+  background: rgba(33, 150, 243, 0.32);
+}
+
+.list-alternate-color:nth-child(odd) {
+  background: aliceblue;
+}
+
+.list-item-icon {
+  font-size: 2em;
+}
+
+a, a:hover, a:visited, a:active, a:focus {
+  color: #fff;
+}
+
+.input {
+  width: calc(100% - 50px);
+  padding: 10px;
+  padding-left: 39px;
+  border: 1px solid #ddd;
+  font-size: 1.17em;
+}
+
+.search {
+  background-size: 20px;
+  background-image: url('search.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  outline: none;
+}
+
+.box-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.m-right-1 {
+  margin-right: 10px;
+}
+
+.m-right-2 {
+  margin-right: 20px;
+}
+
+.m-left-1 {
+  margin-left: 10px;
+}
+
+.m-left-2 {
+  margin-left: 20px;
+}
+
+.focus-text-0 {
+  font-weight: bold;
+  font-size: 3em;
+}
+
+.focus-text-1 {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.focus-text-2 {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.focus-text-3 {
+  font-weight: bold;
+  font-size: 1.17em;
+}
+
+.focus-text-4 {
+  font-size: 1em;
+}
+
+.focus-text-5 {
+  font-size: 0.8em
+}
+
+.focus-text-6 {
+  font-size: 0.7em;
+}
+
+
+.left-align {
+  text-align: left;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.red-1 {
+  color: #ce635c
+}
+
+.green-1 {
+  color: #639a65;
+}
+
+.white-1 {
+  color: #fff;
+}
+
+@media (min-width: 320px) {
+  .focus-text-1 {
+    font-weight: bold;
+    font-size: 2em;
+  }
+
+  .focus-text-2 {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  .focus-text-3 {
+    font-weight: bold;
+    font-size: 1.17em;
+  }
+
+  .focus-text-4 {
+    font-size: 1em;
+  }
+
+  .focus-text-6 {
+    font-size: 0.7em;
+  }
+
+}
