@@ -35,6 +35,10 @@
   background: #33a89d;
 }
 
+.green-3-bg {
+  background: #73c177;
+}
+
 .sidenav-overlay {
   width: 100%;
   height: 100vh;
@@ -110,19 +114,68 @@
   font-size: 2em;
 }
 
-a, a:hover, a:visited, a:active, a:focus {
+.white-link, .white-link:hover, .white-link:visited, .white-link:active, .white-link:focus {
   color: #fff;
 }
 
+.blue-link,
+.blue-link:hover,
+.blue-link:visited,
+.blue-link:active,
+.blue-link:focus {
+  color: #11609e;
+}
+
+.login-container {
+  z-index: 10;
+  /*box-shadow: 0 1px 10px #19476c;*/
+  background: #fff;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+}
+
 .input {
-  width: calc(100% - 50px);
+  width: calc(100% - 15px);
   padding: 10px;
-  padding-left: 39px;
   border: 1px solid #ddd;
   font-size: 1.17em;
 }
 
+.form-input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.form-input:focus {
+  outline: none;
+  border-bottom: 1px solid #2196f3;
+}
+
+.form-label {
+  margin-left: 5px;
+}
+
+.button {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  /*text-transform: uppercase;*/
+}
+
+.form-button {
+  height: 40px;
+  font-size: 1.17em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .search {
+  width: calc(100% - 50px);
+  padding-left: 39px;
   background-size: 20px;
   background-image: url('search.png');
   background-position: 10px 10px;
@@ -137,6 +190,18 @@ a, a:hover, a:visited, a:active, a:focus {
   justify-content: center;
   flex-direction: column;
   text-align: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bottom {
+  margin-top: auto;
+}
+
+.nav-bottom-content {
+  height: 115px;
 }
 
 .p-left-1 {
@@ -226,6 +291,10 @@ a, a:hover, a:visited, a:active, a:focus {
 
 .white-1 {
   color: #fff;
+}
+
+.blue-1-bg {
+  background: #2196f3;
 }
 
 @media (min-width: 320px) {
