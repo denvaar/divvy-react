@@ -1,3 +1,15 @@
+.align-self-center {
+  align-self: center;
+}
+
+.squeeze-content {
+  margin: 0 2em;
+}
+
+.border-bottom-1 {
+  border-bottom: 1px solid #ddd;
+}
+
 .sidenav-container {
   z-index: 10;
   width: 80%;
@@ -70,6 +82,14 @@
   text-overflow: ellipsis;
 }
 
+.dashboard-item-container {
+  width: 330px;
+  height: 130px;
+  box-shadow: 0 1px 10px #ddd;
+  padding: 10px;
+  margin: 5px;
+}
+
 .budget-container {
   width: 130px;
   height: 130px;
@@ -104,6 +124,14 @@
 
 .list-item-clickable:hover {
   background: rgba(33, 150, 243, 0.32);
+}
+
+.dashboard-item-clickable {
+  cursor: pointer;
+}
+
+.dashboard-item-clickable:hover {
+  color: #2196f3;
 }
 
 .list-alternate-color:nth-child(odd) {
@@ -189,6 +217,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
@@ -262,14 +291,17 @@
 
 .focus-text-4 {
   font-size: 1em;
+  font-weight: bold;
 }
 
 .focus-text-5 {
-  font-size: 0.8em
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
 .focus-text-6 {
   font-size: 0.7em;
+  font-weight: bold;
 }
 
 
@@ -298,6 +330,12 @@
 }
 
 @media (min-width: 320px) {
+
+  .squeeze-content {
+    margin: 0 7em;
+    min-width: 33em;
+  }
+  
   .focus-text-1 {
     font-weight: bold;
     font-size: 2em;

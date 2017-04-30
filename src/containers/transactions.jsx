@@ -67,6 +67,7 @@ class Transactions extends Component {
     const filteredTransactions = this.props.transactions
       .filter((t) => filterTransactions(t, this.state.currentFilter));
 
+    /*
     return (
       <div>
         <h4>Transactions</h4>
@@ -85,7 +86,7 @@ class Transactions extends Component {
         })()}
       </div>
     );
-    /*
+    */
     return (
       <div>
         {this.props.isFetching ?
@@ -99,7 +100,6 @@ class Transactions extends Component {
         }
       </div>
     );
-    */
   }
 }
 

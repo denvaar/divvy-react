@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="custom.css">
+  <link rel="stylesheet" href="stylesheet-helpers.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+
+  <div class="grid">
+    <div class="grid-row header">
+      <div class="grid-item box-center focus-text-2">
+      </div>
+      <div class="grid-item-3 box-center">
+        <div class="focus-text-1">HTML & CSS Styleguide</div>
+      </div>
+      <div class="grid-item box-center m-right-2">
+      </div>
+    </div>
+  </div>
+
+  <div class="squeeze-content">
+
+    <div class="grid">
+      <div class="grid-column">
+        
+        <div class="grid-item box-center mt-2">
+          <img width="200px" style="border:3px solid #000;" src="style-sloth.png" />
+        </div>
+        
+        <div class="grid-item">
+          <h2>Table of contents</h2>
+          <ul>
+            <li>
+              <a class="blue-link" href="#layout">Layout</a>
+            </li>
+            <li>
+              <a class="blue-link" href="#colors">Colors</a>
+            </li>
+            <li>
+              <a class="blue-link" href="#typography">Typeography</a>
+            </li>
+            <li>
+              <a class="blue-link" href="#images-and-icons">
+                Images & Icons
+              </a>
+            </li>
+            <li>
+              <a class="blue-link" href="#buttons">Buttons</a>
+            </li>
+            <li>
+              <a class="blue-link" href="#inputs">Inputs</a>
+            </li>
+            <li>
+              <a class="blue-link" href="#links">Links</a>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="grid-item">
+          <h2 id="layout">Layout</h2>
+          <p>Divvy uses a simple flexbox grid system for most of the basic layout. Documentation can be found <a class="blue-link" href="https://github.com/denvaar/grrrid">here</a>. Generally speaking, flexbox should be preferred when adding custom/specific features to the layout.</p>
+          <p>The app is designed to be supported on mobile devices, tablets, and computers. Responsive design should be taken into consideration and applied where appropriate throughout the app.</p>
+         
+          <h3>Responsive breakpoints</h3>
+
+          <div class="grid">
+            <div class="grid-row border-bottom-1">
+              <div class="grid-item box-center">
+                Mobile
+              </div>
+              <div class="grid-item box-center">
+                Tablet 
+              </div>
+              <div class="grid-item box-center">
+                Laptop
+              </div>
+            </div>
+            <div class="grid-row m-top-1">
+              <div class="grid-item box-center">
+                <span class="inline-code">320px</span>
+              </div>
+              <div class="grid-item box-center">
+                <span class="inline-code">768px</span>
+              </div>
+              <div class="grid-item box-center">
+                <span class="inline-code">1224px</span>
+              </div>
+            </div>
+          </div>
+          
+
+          <h3>Headers</h3>
+          <p>For responsive headers, use <span class="inline-code">.focus-text-x</span>, where <span class="inline-code">x</span> is a number from 1 to 6.</p>
+          
+          <div class="grid">
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-1"&gt;focus-text-1&lt;/div&gt;</code></pre>
+              </div>
+              <div class="grid-item box-center">
+                <div class="focus-text-1">focus-text-1</div>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-2"&gt;focus-text-2&lt;/div&gt;</code></pre>
+              </div>
+              <div class="grid-item box-center">
+                <div class="focus-text-2">focus-text-2</div>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-3"&gt;focus-text-3&lt;/div&gt;</code></pre>
+              </div>
+              <div class="grid-item box-center">
+                <div class="focus-text-3">focus-text-3</div>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-4"&gt;focus-text-4&lt;/div&gt;</code></pre>
+              </div>
+              <div class="grid-item box-center">
+                <div class="focus-text-4">focus-text-4</div>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-5"&gt;focus-text-5&lt;/div&gt;</code></pre>
+              </div>
+              <div class="grid-item box-center">
+                <div class="focus-text-5">focus-text-5</div>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-6"&gt;focus-text-6&lt;/div&gt;</code></pre>
+              </div>
+              <div class="grid-item box-center">
+                <div class="focus-text-6">focus-text-6</div>
+              </div>
+            </div>
+           
+            <p>There's also a large header that never changes size:</p>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="focus-text-0"&gt;focus-text-0&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item box-center">
+                <div class="focus-text-0">focus-text-0</div>
+              </div>
+            </div>
+            
+            <p>Page headers are accomplished like this:</p>
+            <div class="grid-row">
+              <div class="grid-item align-self-center">
+                <pre><code>&lt;div class="grid-row header focus-text-1 box-center"&gt;
+  Page Header
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item">
+                <div class="grid-row header focus-text-1 box-center">Page Header</div>
+              </div>
+            </div>
+          </div>
+          
+
+          <h3>Margin, Padding, and Alignment</h3> 
+          <p>Opt to use these existing classes for aligning and spacing page content whenever possible. Follow the same naming pattern when creating new ones:</p>
+          
+          <div class="grid">
+            <div class="grid-row">
+              <div class="grid-item">
+                <p>Margins</p>
+                <ul>
+                  <li>
+                    <span class="inline-code">.m-left-1</span>
+                  </li>
+                  <li>
+                    <span class="inline-code">.m-left-2</span>
+                  </li>
+                  <li>
+                    <span class="inline-code">.m-right-1</span>
+                  </li>
+                  <li>
+                    <span class="inline-code">.m-right-2</span>
+                  </li>
+                  <li>
+                    ...
+                  </li>
+                </ul>
+              </div>
+              <div class="grid-item">
+                <p>Paddings</p>
+                <ul>
+                  <li>
+                    <span class="inline-code">.p-left-1</span>
+                  </li>
+                  <li>
+                    <span class="inline-code">.p-left-2</span>
+                  </li>
+                  <li>
+                    <span class="inline-code">.p-right-1</span>
+                  </li>
+                  <li>
+                    <span class="inline-code">.p-right-2</span>
+                  </li>
+                  <li>
+                    ...
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-item">
+                <p>Alignment</p>
+                <ul>
+                  <li>
+                    <span class="inline-code">.box-center</span> is used to position the content in the center and middle of its parent container.
+                  </li>
+                  <li>
+                    <span class="inline-code">.text-center</span> is used to align the text in the center of the parent container.
+                  </li>
+                  <li>
+                    <span class="inline-code">.text-bottom</span> aligns text at the bottom of the parent container.
+                  </li>
+                  <li>
+                    <span class="inline-code">.right-align</span> is used to align text to the right of its parent container.
+                  </li>
+                  <li>
+                    <span class="inline-code">.left-align</span> is used to align text to the left of its parent container.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="grid-item">
+          <h2 id="colors">Colors</h2>
+        </div>
+        <div class="grid-item">
+          <h2 id="typeography">Typeography</h2>
+          <p>TBD!</p>
+        </div>
+        <div class="grid-item">
+          <h2 id="images-and-icons">Images & Icons</h2>
+        </div>
+        <div class="grid-item">
+          <h2 id="buttons">Buttons</h2>
+        </div>
+        <div class="grid-item">
+          <h2 id="inputs">Inputs</h2>
+        </div>
+        <div class="grid-item">
+          <h2 id="links">Links</h2>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
