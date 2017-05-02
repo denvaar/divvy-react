@@ -12,13 +12,7 @@ pre {
   border-radius: 2px;
 }
 
-.demo-box-container {
-  border: 1px solid #000;
-}
-
-.demo-box {
-  background: #607d8b;
-  width: 60px;
-  height: 30px;
-  color: #fff;
+.color-demo {
+  width: 100px;
+  height: 100px;
 }
