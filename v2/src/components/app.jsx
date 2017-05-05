@@ -4,7 +4,8 @@ import {
   Route,
   Link,
   Switch,
-  Redirect
+  Redirect,
+  withRouter
 } from 'react-router-dom';
 
 
@@ -12,10 +13,14 @@ const App = () => {
   return (
     <Router>
       <div>
+        <NavBar />
         <Switch>
           <Route path="/" exact component={Login} />
           <LoginRequiredRoute
+            path="/stats" exact component={StatsPage} />
+          <LoginRequiredRoute
             path="/dashboard" exact component={Dashboard} />
+          <Route path="/public" exact component={PublicPage} />
           <Route component={NotFound404} />
         </Switch>
       </div>
@@ -23,18 +28,44 @@ const App = () => {
   );
 }
 
+const NavBar = withRouter(({ history }) => (
+  isAuthenticated() ? (
+    <button onClick={() => fakeJWTAuth.setKey(null, () => history.push('/'))}>Log out</button>
+  ) : (
+    null
+  )
+));
+
 const Dashboard = () => {
   return (
     <p>Dashboard page</p>
   );
 }
 
-const defaultRoute = () => ( { from: { pathname: '/' } } )
+const StatsPage = () => {
+  return (
+    <p>Statistics page</p>
+  );
+}
+
+const PublicPage = () => {
+  return (
+    <p>Public page</p>
+  );
+}
+
+const NotFound404 = () => {
+  return (
+    <p>Page not found (404)</p>
+  );
+}
+
+const defaultRoute = () => ( { from: { pathname: '/dashboard' } } )
 
 const LoginRequiredRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest} render={props => (
-      fakeAuth.isAuthenticated ? (
+      isAuthenticated() ? (
         <Component {...props} />
       ) : (
         <Redirect to={{
@@ -46,15 +77,20 @@ const LoginRequiredRoute = ({ component: Component, ...rest }) => {
   );
 }
 
-const fakeAuth = {
-  isAuthenticated: false,
-  authenticate(cb) {
-    this.isAuthenticated = true
-    setTimeout(cb, 100) // fake async
-  },
-  signout(cb) {
-    this.isAuthenticated = false
-    setTimeout(cb, 100)
+/* this would normally be the result of an api call */
+const isAuthenticated = (token = fakeJWTAuth.get('auth-token')) => token === 'fake-jwt-token';
+
+const fakeJWTAuth = {
+  store: window.localStorage,
+  key: 'auth-token',
+  get(key) { return this.store.getItem(this.key) },
+  setKey(val, callback) {
+    if (val) {
+      this.store.setItem(this.key, val);
+    } else {
+      this.store.removeItem(this.key);
+    }
+    setTimeout(callback, 200);
   }
 }
 
@@ -68,7 +104,8 @@ class Login extends Component {
   }
 
   login() {
-    fakeAuth.authenticate(() => this.setState({ redirectToReferrer: true }));
+    fakeJWTAuth.setKey('fake-jwt-token', () =>
+      this.setState({ redirectToReferrer: true }) )
   }
 
   render() {
@@ -84,16 +121,14 @@ class Login extends Component {
       <div>
         <h3>Login Page</h3>
         <button onClick={() => this.login()}>login</button>
+        <ul>
+          <li>
+            <Link to="/public">Public Page</Link>
+          </li>
+        </ul>
       </div>
     );
   }
 }
-
-const NotFound404 = () => {
-  return (
-    <p>Page not found (404)</p>
-  );
-}
-
 
 export default App;
