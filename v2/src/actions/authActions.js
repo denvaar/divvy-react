@@ -18,12 +18,14 @@ export const requestToken = (props) => {
       if (response.status === 201) {
         storage.setKey(response.data.jwt);
         dispatch(loginSuccess(response));
-        browserHistory.push('/accounts');
       } else {
         dispatch(loginFailure(response));
       }
     }).catch(error => {
-      dispatch(loginFailure(error));
+      const message = {
+        formErrors: 'Uh, oh - Something went wrong, but it\'s not your fault'
+      };
+      dispatch(loginFailure(message));
     });
   }
 }
@@ -65,12 +67,10 @@ const loginSuccess = (response) => {
   };
 }
 
-const loginFailure = (error) => {
-  // TODO do something with error
-  console.log(error.response.data.errors)
+const loginFailure = (errors) => {
   return {
     type: LOGIN_FAILURE,
-    errors: Object.values(error.response.data.errors)
+    errors: errors
   };
 }
 

@@ -1,0 +1,18 @@
+pre {
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin: 1em;
+  background: ghostwhite;
+}
+
+.inline-code {
+  font-family: monospace;
+  background: aliceblue;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.color-demo {
+  width: 100px;
+  height: 100px;
+}

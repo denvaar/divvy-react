@@ -8,6 +8,7 @@ import {
   withRouter
 } from 'react-router-dom';
 
+import LoginContainer from '../containers/loginContainer';
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
       <div>
         <NavBar />
         <Switch>
-          <Route path="/" exact component={Login} />
+          <Route path="/" exact component={LoginContainer} />
           <LoginRequiredRoute
             path="/stats" exact component={StatsPage} />
           <LoginRequiredRoute
@@ -94,7 +95,7 @@ const fakeJWTAuth = {
   }
 }
 
-
+/*
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -130,5 +131,5 @@ class Login extends Component {
     );
   }
 }
-
+*/
 export default App;
