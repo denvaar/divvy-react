@@ -9,6 +9,10 @@ import {
 } from 'react-router-dom';
 
 import LoginContainer from '../containers/loginContainer';
+import LoginRequiredRoute from '../containers/loginRequiredRoute';
+import Dashboard from '../components/dashboard';
+import AccountContainer from '../containers/accountContainer';
+
 
 const App = () => {
   return (
@@ -18,10 +22,9 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={LoginContainer} />
           <LoginRequiredRoute
-            path="/stats" exact component={StatsPage} />
+            path="/accounts" exact component={AccountContainer} />
           <LoginRequiredRoute
             path="/dashboard" exact component={Dashboard} />
-          <Route path="/public" exact component={PublicPage} />
           <Route component={NotFound404} />
         </Switch>
       </div>
@@ -36,13 +39,13 @@ const NavBar = withRouter(({ history }) => (
     null
   )
 ));
-
+/*
 const Dashboard = () => {
   return (
     <p>Dashboard page</p>
   );
 }
-
+*/
 const StatsPage = () => {
   return (
     <p>Statistics page</p>
@@ -62,8 +65,11 @@ const NotFound404 = () => {
 }
 
 const defaultRoute = () => ( { from: { pathname: '/dashboard' } } )
-
+/*
 const LoginRequiredRoute = ({ component: Component, ...rest }) => {
+  
+  const token = storage.get('auth-token');
+  
   return (
     <Route {...rest} render={props => (
       isAuthenticated() ? (
@@ -77,6 +83,19 @@ const LoginRequiredRoute = ({ component: Component, ...rest }) => {
     )} />
   );
 }
+
+const mapStateToProps = (state) => (
+  {
+    authenticated: state.authReducer.authenticated
+  }
+)
+
+const mapDispatchToProps = (dispatch) => (
+  {
+    fetchUser: (token) => dispatch(fetchUser(token))
+  }
+)
+*/
 
 /* this would normally be the result of an api call */
 const isAuthenticated = (token = fakeJWTAuth.get('auth-token')) => token === 'fake-jwt-token';

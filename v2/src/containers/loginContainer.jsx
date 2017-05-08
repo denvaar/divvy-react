@@ -7,7 +7,7 @@ import Login from '../components/login';
 import { requestToken } from '../actions/authActions';
 
 
-const defaultRoute = () => ( { from: { pathname: '/public' } } )
+const defaultRoute = () => ( { from: { pathname: '/dashboard' } } )
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -24,10 +24,10 @@ class LoginContainer extends Component {
     const { errors, authenticated } = this.props;
     
     if (authenticated) {
-      const { from } = this.props.location.state || defaultRoute()
+      const { from } = this.props.location.state || defaultRoute();
       return <Redirect to={from} />
     }
-
+    
     return (
       <Login handleLogin={this.handleLogin} errors={errors} />
     );

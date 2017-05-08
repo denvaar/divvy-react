@@ -183,6 +183,14 @@
   color: #11609e;
 }
 
+.grey-link,
+.grey-link:hover,
+.grey-link:visited,
+.grey-link:active,
+.grey-link:focus {
+  color: #666;
+}
+
 .login-container {
   z-index: 10;
   /*box-shadow: 0 1px 10px #19476c;*/

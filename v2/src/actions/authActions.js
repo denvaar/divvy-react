@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import storage from '../utils/localStorageUtils';
 import apiBase from '../utils/apiConfigUtils';
 
-
+export const AUTH_PENDING = 'AUTH_PENDING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -14,34 +14,45 @@ export const USER_CREATED = 'USER_CREATED';
 
 export const requestToken = (props) => {
   return dispatch => {
-    return axios.post(`${apiBase}/accounts/sessions`, props).then(response => {
-      if (response.status === 201) {
-        storage.setKey(response.data.jwt);
-        dispatch(loginSuccess(response));
-      } else {
-        dispatch(loginFailure(response));
-      }
-    }).catch(error => {
-      const message = {
-        formErrors: 'Uh, oh - Something went wrong, but it\'s not your fault'
-      };
-      dispatch(loginFailure(message));
-    });
+    
+    dispatch({ type: AUTH_PENDING });
+
+    axios.post(`${apiBase}/accounts/sessions`, props)
+      .then(response => {
+        if (response.status === 201) {
+          storage.setKey(response.data.jwt);
+          dispatch(loginSuccess(response));
+        } else {
+          dispatch(loginFailure(response));
+        }
+      })
+      .catch(error => {
+        const message = {
+          formErrors: 'Uh, oh - Something went wrong, but it\'s not your fault'
+        };
+        dispatch(loginFailure(message));
+      });
   }
 }
 
 /* Browser has a token, but not logged in (page refresh, etc.) */
 export const fetchUser = (token) => {
   return dispatch => {
+    
+    dispatch({ type: AUTH_PENDING });
+
     const config = {
       headers: {
         'Authorization': `JWT ${token}`
       }
     };
-    return axios.get(`${apiBase}/accounts/users/retrieve`, config).then(response => {
-      const jwt = response.data.jwt;
-      dispatch(userRetrieved(response));
-    });
+    axios.get(`${apiBase}/accounts/users/retrieve`, config)
+      .then(response => {
+        const jwt = response.data.jwt;
+        dispatch(userRetrieved(response));
+      }).catch(error => {
+        dispatch(loginFailure(error));
+      });
   }
 }
 
