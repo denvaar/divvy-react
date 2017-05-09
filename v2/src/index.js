@@ -6,8 +6,12 @@ import thunkMiddleware from 'redux-thunk';
 import logger from 'redux-logger';
 
 import App from './components/app';
-
 import reducers from './reducers';
+
+import '../stylesheets/custom.css';
+import '../stylesheets/main.css';
+import '../stylesheets/clouds.css';
+
 
 const createStoreWithMiddleware = compose(
   applyMiddleware(logger, thunkMiddleware),

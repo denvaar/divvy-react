@@ -10,7 +10,6 @@ const cardData = [
   {
     title: "Accounts",
     linkTo: "/accounts",
-    linkComponent: AccountContainer,
     icon: "university",
     description: "Accounts are designed to reflect your checking, savings, and credit card accounts.",
     subLinks: [
@@ -19,8 +18,7 @@ const cardData = [
   },
   {
     title: "Budgets",
-    linkTo: "/accounts",
-    linkComponent: AccountContainer,
+    linkTo: "/budgets",
     icon: "book",
     description: "Use budgets to establish and define your desired spending habits.",
     subLinks: [
@@ -30,8 +28,7 @@ const cardData = [
   {
     title: "Transactions",
     icon: "credit-card",
-    linkTo: "/accounts",
-    linkComponent: AccountContainer,
+    linkTo: "/transactions",
     description: "View and categorize your transaction history",
     subLinks: [
       <a key="add" className="blue-link" href="#">Add Transaction</a>,
@@ -42,8 +39,7 @@ const cardData = [
   {
     title: "Reports",
     icon: "pie-chart",
-    linkTo: "/accounts",
-    linkComponent: AccountContainer,
+    linkTo: "/reports",
     description: "Reports help you visualize your spending and saving habits over time.",
     subLinks: [
       <a key="exp" className="blue-link" href="#">Export Reports</a>

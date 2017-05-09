@@ -16,7 +16,6 @@ const DashboardCard = ({
       <div className="grid-item dashboard-item-container">
         <div className="grid-row">
           <Link to={linkTo}
-                component={linkComponent}
                 className="grid-item focus-text-2 box-center dashboard-item-clickable grey-link">
             <div className="focus-text-0">
               <i className={`fa fa-${icon}`} aria-hidden="true"></i>
@@ -38,7 +37,10 @@ const DashboardCard = ({
 DashboardCard.propTypes = {
   title: PropTypes.string.isRequired,
   linkTo: PropTypes.string.isRequired,
-  linkComponent: PropTypes.element.isRequired,
+  linkComponent: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func
+  ]).isRequired,
   icon: PropTypes.string.isRequired,
   description: PropTypes.string,
   subLinks: PropTypes.arrayOf(

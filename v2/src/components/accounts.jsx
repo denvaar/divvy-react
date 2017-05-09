@@ -6,7 +6,7 @@ import Header from './header';
 
 const Accounts = () => {
   return (
-    <div classNameName="grid">
+    <div className="grid">
       <Header title="Accounts" />
       <div className="grid-row list-alternate-color">
         <div className="grid-item">
