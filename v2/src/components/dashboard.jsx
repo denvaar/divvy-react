@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import AccountContainer from '../containers/accountContainer';
 import Header from './header';
 import DashboardCard from './dashboardCard';
+import withSideNav from './withSideNav';
+
 
 const cardData = [
   {
@@ -48,14 +50,14 @@ const cardData = [
 ];
 
 
-const Dashboard = () => {
+const Dashboard = ({ toggleSideNav }) => {
   const dashboardCards = cardData.map(props => {
     return <DashboardCard key={props.title} {...props} />
   });
 
   return (    
     <div>
-      <Header title="Dashboard" />
+      <Header title="Dashboard" handleMenuClick={toggleSideNav} />
       <div className="grid-wrap content-centered">
         {dashboardCards}
       </div>
@@ -65,4 +67,4 @@ const Dashboard = () => {
 
 Dashboard.propTypes = { }
 
-export default Dashboard;
+export default withSideNav(Dashboard, []);

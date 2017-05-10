@@ -14,6 +14,7 @@ import LoginRequiredRoute from '../containers/loginRequiredRoute';
 import Dashboard from './dashboard';
 import AccountContainer from '../containers/accountContainer';
 import Budgets from './budgets';
+import NotFound404 from './notFound404';
 
 
 const App = () => {
@@ -42,12 +43,6 @@ const App = () => {
         </Switch>
       </div>
     </Router>
-  );
-}
-
-const NotFound404 = () => {
-  return (
-    <p>Page not found (404)</p>
   );
 }
 

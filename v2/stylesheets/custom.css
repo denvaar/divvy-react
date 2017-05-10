@@ -3,6 +3,14 @@ a {
   text-decoration: none;
 }
 
+.inline-button {
+  display: inline;
+  cursor: pointer;
+}
+.inline-button:hover {
+  color: #33a89d;
+}
+
 .form-container--mobile {
 }
 

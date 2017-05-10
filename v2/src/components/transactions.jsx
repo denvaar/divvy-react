@@ -5,7 +5,7 @@ import Header from './header';
 import SearchBar from './searchBar';
 import TransactionRow from './transactionRow';
 import withSideNav from './withSideNav';
-
+import { transactionNavProps as navProps } from '../utils/sideNavData';
 
 const transactionData = [
   {
@@ -49,4 +49,4 @@ const Transactions = ({ toggleSideNav }) => {
 Transactions.propTypes = {
 }
 
-export default withSideNav(Transactions);
+export default withSideNav(Transactions, navProps);

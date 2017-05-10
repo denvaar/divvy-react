@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const DashboardCard = ({
   title,
   linkTo,
-  linkComponent,
   icon,
   description,
   subLinks
@@ -37,10 +36,6 @@ const DashboardCard = ({
 DashboardCard.propTypes = {
   title: PropTypes.string.isRequired,
   linkTo: PropTypes.string.isRequired,
-  linkComponent: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func
-  ]).isRequired,
   icon: PropTypes.string.isRequired,
   description: PropTypes.string,
   subLinks: PropTypes.arrayOf(

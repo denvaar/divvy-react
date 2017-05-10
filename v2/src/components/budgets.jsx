@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import SearchBar from './searchBar';
 import BudgetCard from './budgetCard';
+import withSideNav from './withSideNav';
+import { budgetNavProps as navProps } from '../utils/sideNavData';
 
 
 const budgetData = [
@@ -37,14 +39,14 @@ const budgetData = [
   },
 ];
 
-const Budgets = () => {
+const Budgets = ({ toggleSideNav }) => {
   const budgetCards = budgetData.map(budget => {
     return <BudgetCard key={budget.title} {...budget} />
   });
 
   return (
     <div>
-      <Header title="Budgets" />
+      <Header title="Budgets" handleMenuClick={toggleSideNav} />
       <SearchBar />
       <div className="grid-wrap content-centered">
         {budgetCards}
@@ -56,4 +58,4 @@ const Budgets = () => {
 Budgets.propTypes = {
 }
 
-export default Budgets;
+export default withSideNav(Budgets, navProps);
