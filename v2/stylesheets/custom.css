@@ -152,7 +152,7 @@ a {
 }
 
 .list-item-clickable:hover {
-  background: rgba(33, 150, 243, 0.32);
+  background: aliceblue;
 }
 
 .dashboard-item-clickable {
@@ -164,7 +164,7 @@ a {
 }
 
 .list-alternate-color:nth-child(odd) {
-  background: aliceblue;
+  background: whitesmoke;
 }
 
 .list-item-icon {

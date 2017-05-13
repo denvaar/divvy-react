@@ -1,32 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { currencyFormatter } from '../utils/utils';
 import Header from './header';
 import withSideNav from './withSideNav';
 import { accountNavProps as navProps } from '../utils/sideNavData';
 import AccountRow from './accountRow';
 
 
-const accountData = [
-  {
-    name: 'Zions Simple Checking',
-    balance: 3000.66
-  },
-  {
-    name: 'Zions Checking Plus',
-    balance: 32000.00
-  },
-  {
-    name: 'Secret Hedge Fund',
-    balance: 600000.00
-  },
-];
-
-const Accounts = ({ toggleSideNav }) => {
-  const accounts = accountData.map((props, i) => (
+const Accounts = ({ bankAccounts, toggleSideNav }) => {
+  const accounts = bankAccounts.map((props, i) => (
     <AccountRow key={i} {...props} />
   ));
-  const totalBalance = accountData.reduce((acc, obj) => acc + obj.balance, 0);
+  const totalBalance = bankAccounts.reduce((acc, obj) => acc + obj.balance, 0);
 
   return (
     <div className="grid">
@@ -41,7 +27,7 @@ const Accounts = ({ toggleSideNav }) => {
                   Total Balance:
                 </div>
                 <div className="grid-item box-center right-align m-right-2">
-                  ${totalBalance}
+                  {currencyFormatter.format(totalBalance)}
                 </div>
               </div>
             </div>
@@ -54,6 +40,7 @@ const Accounts = ({ toggleSideNav }) => {
 }
 
 Accounts.propTypes = {
+  bankAccounts: PropTypes.array
 }
 
 export default withSideNav(Accounts, navProps);

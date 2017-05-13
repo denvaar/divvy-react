@@ -21,7 +21,7 @@ export const requestToken = (props) => {
       .then(response => {
         if (response.status === 201) {
           storage.setKey(response.data.jwt);
-          dispatch(loginSuccess(response));
+          dispatch(loginSuccess(response, props.username));
         } else {
           dispatch(loginFailure(response));
         }
@@ -71,10 +71,12 @@ export const createUser = (data) => {
   }
 }
 
-const loginSuccess = (response) => {
+const loginSuccess = (response, email) => {
+  console.log('----', email)
   return {
     type: LOGIN_SUCCESS,
-    name: `${response.data.first_name} ${response.data.last_name}`
+    name: `${response.data.first_name} ${response.data.last_name}`,
+    email: email
   };
 }
 
@@ -113,9 +115,9 @@ const userCreationFailure = (error) => {
 }
 
 const userRetrieved = (response) => {
-  console.log(response);
   return {
     type: USER_RETRIEVED,
-    name: `${response.data.first_name} ${response.data.last_name}`
+    name: `${response.data.first_name} ${response.data.last_name}`,
+    email: response.data.email
   };
 }

@@ -28,7 +28,9 @@ export const fetchTransactions = (token) => {
       .then(response => {
         dispatch({
           type: FETCH_TRANSACTIONS_SUCCESS,
-          data: response.data
+          data: response.data.map(obj => (
+            { ...obj, amount: Number(obj.amount) }
+          ))
         });
       })
       .catch(error => {

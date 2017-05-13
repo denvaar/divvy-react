@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { currencyFormatter } from '../utils/utils';
+
 
 const AccountRow = ({
   name,
@@ -19,7 +21,7 @@ const AccountRow = ({
                 {name}
               </div>
               <div className="grid-item-2 box-center right-align m-right-2">
-                ${balance}
+                {currencyFormatter.format(balance)}
               </div>
             </div>
           </div>

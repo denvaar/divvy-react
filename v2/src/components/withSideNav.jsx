@@ -7,7 +7,8 @@ import { logout } from '../actions/authActions';
 
 const mapStateToProps = (state) => (
   {
-    name: state.authReducer.name
+    name: state.authReducer.name,
+    email: state.authReducer.email
   }
 )
 
@@ -40,6 +41,7 @@ const withSideNav = (WrappedComponent, sideNavProps) => {
       };
       const profileProps = {
         userName: this.props.name,
+        email: this.props.email,
         handleLogout: this.props.handleLogout
       };
 

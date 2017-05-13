@@ -8,7 +8,7 @@ import {
   withRouter
 } from 'react-router-dom';
 
-import Transactions from './transactions';
+import TransactionContainer from '../containers/transactionContainer';
 import LoginContainer from '../containers/loginContainer';
 import LoginRequiredRoute from '../containers/loginRequiredRoute';
 import Dashboard from './dashboard';
@@ -38,7 +38,7 @@ const App = () => {
           <LoginRequiredRoute
             path="/transactions"
             exact
-            component={Transactions} />
+            component={TransactionContainer} />
           <Route component={NotFound404} />
         </Switch>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const SideNavProfileSection = ({ userName, handleLogout }) => {
+const SideNavProfileSection = ({ userName, email, handleLogout }) => {
   return (
     <div className="grid-item profile-container">
       <div className="grid">
@@ -25,7 +25,7 @@ const SideNavProfileSection = ({ userName, handleLogout }) => {
             <i className="fa fa-user" aria-hidden="true"></i>
             &nbsp;&nbsp;
             {userName}<br/>
-            denverpsmith@gmail.com
+            {email}
           </div>
         </div>
       </div>
