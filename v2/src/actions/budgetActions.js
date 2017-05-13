@@ -19,7 +19,13 @@ export const fetchBudgets = (token) => {
       .then(response => {
         dispatch({
           type: FETCH_BUDGETS_SUCCESS,
-          data: response.data
+          data: response.data.map(obj => (
+            {
+              ...obj,
+              amount: Number(obj.amount),
+              goal: Number(obj.goal)
+            }
+          ))
         });
       })
       .catch(error => { 

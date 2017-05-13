@@ -8,39 +8,9 @@ import withSideNav from './withSideNav';
 import { budgetNavProps as navProps } from '../utils/sideNavData';
 
 
-const budgetData = [
-  {
-    title: "House Savings",
-    icon: "home",
-    period: "Monthly",
-    currentAmount: 0,
-    totalAmount: 1000
-  },
-  {
-    title: "Travel",
-    icon: "plane",
-    period: "Yearly",
-    currentAmount: 0,
-    totalAmount: 500
-  },
-  {
-    title: "Groceries",
-    icon: "cutlery",
-    period: "Monthly",
-    currentAmount: 200.66,
-    totalAmount: 250
-  },
-  {
-    title: "Bike Stuff",
-    icon: "bicycle",
-    period: "Monthly",
-    currentAmount: 63.70,
-    totalAmount: 50
-  },
-];
 
-const Budgets = ({ toggleSideNav }) => {
-  const budgetCards = budgetData.map(budget => {
+const Budgets = ({ budgets, toggleSideNav }) => {
+  const budgetCards = budgets.map(budget => {
     return <BudgetCard key={budget.title} {...budget} />
   });
 
@@ -56,6 +26,7 @@ const Budgets = ({ toggleSideNav }) => {
 }
 
 Budgets.propTypes = {
+  budgets: PropTypes.array
 }
 
 export default withSideNav(Budgets, navProps);

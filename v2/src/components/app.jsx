@@ -13,7 +13,7 @@ import LoginContainer from '../containers/loginContainer';
 import LoginRequiredRoute from '../containers/loginRequiredRoute';
 import Dashboard from './dashboard';
 import AccountContainer from '../containers/accountContainer';
-import Budgets from './budgets';
+import BudgetContainer from '../containers/budgetContainer';
 import NotFound404 from './notFound404';
 
 
@@ -30,7 +30,7 @@ const App = () => {
           <LoginRequiredRoute
             path="/budgets"
             exact
-            component={Budgets} />
+            component={BudgetContainer} />
           <LoginRequiredRoute
             path="/dashboard"
             exact
