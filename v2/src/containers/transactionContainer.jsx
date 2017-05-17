@@ -24,9 +24,10 @@ class TransactionContainer extends Component {
   }
 
   render() {
-    const { transactions } = this.props;
+    const { transactions, isFetching } = this.props;
+    console.log(transactions[0])
     return (
-      <Transactions transactions={transactions} />
+      <Transactions transactions={transactions} isFetching={isFetching} />
     );
   }
 }
@@ -37,7 +38,7 @@ const mapStateToProps = (state) => {
   
   return {
     isFetching:
-      state.transactionReducer.isFetching &&
+      state.transactionReducer.isFetching || 
       state.budgetReducer.isFetching,
     transactions,
     budgets

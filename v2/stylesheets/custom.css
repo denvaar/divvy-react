@@ -1,6 +1,31 @@
+html {
+  font-family: Rubik, Helvetica Neue, sans-serif;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 10px solid #91c8f5;
+  border-bottom: 10px solid #6bd3c9;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .inline-button {
@@ -78,6 +103,9 @@ a {
 
 .green-3-bg {
   background: #73c177;
+}
+.green-3 {
+  color: #73c177;
 }
 
 .sidenav-overlay {
@@ -438,6 +466,10 @@ select[class="form-input"] {
 
 .blue-1-bg {
   background: #2196f3;
+}
+
+.blue-1 {
+  color: #2196f3;
 }
 
 .blue-2-bg {

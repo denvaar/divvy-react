@@ -11,6 +11,8 @@ const SideNav = ({ toggleVisibility, profileProps, content = [] }) => {
   const sideNavButtons = content.map((props, i) => (
     <SideNavButton key={i} {...props} />
   ));
+  
+  document.documentElement.style.overflow = 'hidden';
 
   return (
     <div>
@@ -23,7 +25,11 @@ const SideNav = ({ toggleVisibility, profileProps, content = [] }) => {
           </div>
         </div>
       </div>
-      <div className="sidenav-overlay" onClick={() => toggleVisibility()}></div>
+      <div className="sidenav-overlay" onClick={() => {
+          document.documentElement.style.overflow = '';
+          toggleVisibility()
+        }}>
+      </div>
     </div>
   );
 }
