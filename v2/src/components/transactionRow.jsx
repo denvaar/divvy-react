@@ -6,7 +6,6 @@ import { currencyFormatter, formatDate } from '../utils/utils';
 
 const TransactionRow = ({
   name,
-  icon,
   transactionType,
   amount,
   created,
@@ -19,7 +18,7 @@ const TransactionRow = ({
           <div className="grid">
             <div className="grid-row">
               <div className="grid-item list-item-icon box-center left-align m-left-2">
-                {!categorized ? <i className={`fa fa-tags focus-text-6`} aria-hidden="true"></i> : null}
+                <i className={`fa fa-tags focus-text-6 ${categorized ? '' : 'grey-2'}`} aria-hidden="true"></i>
               </div>
               <div className="grid-item-2">
                 <div>
@@ -42,11 +41,10 @@ const TransactionRow = ({
 }
 
 TransactionRow.propTypes = {
-  //name: PropTypes.string.isRequired,
-  //icon: PropTypes.string.isRequired,
-  //type: PropTypes.string.isRequired,
-  //amount: PropTypes.number.isRequired,
-  //created: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  transactionType: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  created: PropTypes.string.isRequired
 }
 
 export default TransactionRow;

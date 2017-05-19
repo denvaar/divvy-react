@@ -9,7 +9,9 @@ import {
   fetchTransactions,
   updateTransaction,
   categorizeTransaction,
+  filterTransactions,
 } from '../actions/transactionActions';
+import { filteredTransactions } from '../utils/dataFilters';
 
 
 class TransactionContainer extends Component {
@@ -24,10 +26,13 @@ class TransactionContainer extends Component {
   }
 
   render() {
-    const { transactions, isFetching } = this.props;
-    console.log(transactions[0])
+    const { transactions, isFetching, filterTransactions, currentFilter } = this.props;
     return (
-      <Transactions transactions={transactions} isFetching={isFetching} />
+      <Transactions
+        transactions={filteredTransactions(transactions, currentFilter)}
+        isFetching={isFetching}
+        currentFilter={currentFilter}
+        filterFunction={filterTransactions} />
     );
   }
 }
@@ -37,11 +42,12 @@ const mapStateToProps = (state) => {
   const { budgets } = state.budgetReducer;
   
   return {
+    currentFilter: state.transactionReducer.filters,
     isFetching:
       state.transactionReducer.isFetching || 
       state.budgetReducer.isFetching,
     transactions,
-    budgets
+    budgets,
   };  
 }
 
@@ -58,7 +64,10 @@ const mapDispatchToProps = (dispatch) => {
     },  
     categorizeTransaction: (token, id, data) => {
       dispatch(categorizeTransaction(token, id, data));
-    }   
+    },
+    filterTransactions: (filters) => {
+      dispatch(filterTransactions(filters));
+    }
   };  
 }
 

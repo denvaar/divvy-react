@@ -14,6 +14,8 @@ export const CATEGORIZE_TRANSACTION_PENDING = 'CATEGORIZE_TRANSACTION_PENDING';
 export const CATEGORIZE_TRANSACTION_SUCCESS = 'CATEGORIZE_TRANSACTION_SUCCESS';
 export const CATEGORIZE_TRANSACTION_ERROR = 'CATEGORIZE_TRANSACTION_ERROR';
 
+export const FILTER_TRANSACTIONS = 'FILTER_TRANSACTIONS';
+
 /* transaction action creators */
 export const fetchTransactions = (token) => {
   return dispatch => {
@@ -91,5 +93,14 @@ export const categorizeTransaction = (token, id, data) => {
           error: error
         });
       });
+  };
+}
+
+export const filterTransactions = (filters) => {
+  return dispatch => {
+    dispatch({
+      type: FILTER_TRANSACTIONS,
+      filters: filters
+    });
   };
 }

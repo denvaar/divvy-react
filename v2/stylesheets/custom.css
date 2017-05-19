@@ -496,6 +496,14 @@ select[class="form-input"] {
   background: #666;
 }
 
+.grey-2 {
+  color: #cfcfcf;
+}
+
+.grey-2-bg {
+  background: #cfcfcf;
+}
+
 .blue-5 {
   color: #607D8B;
 }
