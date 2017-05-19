@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-const Header = ({ title, handleMenuClick }) => {
+const Header = ({ title, handleMenuClick, filterComponent }) => {
   return (
     <div className="grid">
       <div className="grid-row header">
@@ -15,6 +15,7 @@ const Header = ({ title, handleMenuClick }) => {
           <div className="focus-text-1">{title}</div>
         </div>
         <div className="grid-item box-center m-right-2">
+          {filterComponent ? filterComponent : null}
         </div>
       </div>
     </div>
@@ -23,7 +24,8 @@ const Header = ({ title, handleMenuClick }) => {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  handleMenuClick: PropTypes.func
+  handleMenuClick: PropTypes.func,
+  filterComponent: PropTypes.element
 }
 
 export default Header;

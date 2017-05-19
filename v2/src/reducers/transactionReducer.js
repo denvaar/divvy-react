@@ -8,10 +8,12 @@ import {
   CATEGORIZE_TRANSACTION_PENDING,
   CATEGORIZE_TRANSACTION_SUCCESS,
   CATEGORIZE_TRANSACTION_ERROR,
+  FILTER_TRANSACTIONS,
 } from '../actions/transactionActions';
 
 
 const INITIAL_STATE = {
+  filters: 'uncategorized',
   transactions: [],
   isFetching: false
 }
@@ -70,6 +72,12 @@ const transactionReducer = (state = INITIAL_STATE, action) => {
           },
           ...state.transactions.slice(index + 1)
         ]
+      };
+    }
+    case FILTER_TRANSACTIONS: {
+      return {
+        ...state,
+        filters: action.filters
       };
     }
     default:

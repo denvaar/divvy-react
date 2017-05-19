@@ -58,7 +58,7 @@ const Dashboard = ({ toggleSideNav }) => {
   return (    
     <div>
       <Header title="Dashboard" handleMenuClick={toggleSideNav} />
-      <div className="grid-wrap content-centered">
+      <div className="grid-wrap content-centered pt-2">
         {dashboardCards}
       </div>
     </div>

@@ -10,15 +10,25 @@ import withSideNav from './withSideNav';
 import { transactionNavProps as navProps } from '../utils/sideNavData';
 
 
-const Transactions = ({ transactions, isFetching, toggleSideNav }) => {
+const filterComponent = (filterFunction, currentFilter) => ( 
+  <select onChange={(e) => filterFunction(e.target.value)} value={currentFilter}>
+    <option value="all">All</option>
+    <option value="uncategorized">Uncategorized</option>
+    <option value="categorized">Categorized</option>
+  </select>
+);
+
+const Transactions = ({ transactions, isFetching, toggleSideNav, filterFunction, currentFilter }) => {
   const transactionRows = transactions.map((props, i) => {
     return <TransactionRow key={i} {...props} transactionType={props.transaction_type}/>
   });
   
   return (
     <div className="grid">
-      {isFetching}
-      <Header title="Transactions" handleMenuClick={toggleSideNav} />
+      <Header
+        title="Transactions"
+        handleMenuClick={toggleSideNav}
+        filterComponent={filterComponent(filterFunction, currentFilter)} />
       <SearchBar />
       {isFetching ? <Loading /> : null}
       {!transactionRows.length && !isFetching && <NoTransactions />}
@@ -28,7 +38,10 @@ const Transactions = ({ transactions, isFetching, toggleSideNav }) => {
 }
 
 Transactions.propTypes = {
-  transactions: PropTypes.array
+  transactions: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  toggleSideNav: PropTypes.func.isRequired,
+  filterFunction: PropTypes.func
 }
 
 export default withSideNav(Transactions, navProps);
