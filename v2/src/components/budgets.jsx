@@ -5,6 +5,7 @@ import Header from './header';
 import SearchBar from './searchBar';
 import BudgetCard from './budgetCard';
 import withSideNav from './withSideNav';
+import NoBudgets from './noBudgets';
 import { budgetNavProps as navProps } from '../utils/sideNavData';
 
 
@@ -19,7 +20,7 @@ const Budgets = ({ budgets, toggleSideNav }) => {
       <Header title="Budgets" handleMenuClick={toggleSideNav} />
       <SearchBar />
       <div className="grid-wrap content-centered">
-        {budgetCards}
+        {budgetCards} <NoBudgets />
       </div>
     </div>
   );

@@ -17,7 +17,6 @@ const Transactions = ({ transactions, isFetching, toggleSideNav }) => {
   
   return (
     <div className="grid">
-      {isFetching}
       <Header title="Transactions" handleMenuClick={toggleSideNav} />
       <SearchBar />
       {isFetching ? <Loading /> : null}

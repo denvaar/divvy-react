@@ -1,3 +1,9 @@
+.page-form-container {
+  height: 100vh;
+  width: 90%;
+  max-width: 25em;
+}
+
 .form-container--mobile {
 }
 

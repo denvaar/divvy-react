@@ -71,7 +71,7 @@ export const budgetNavProps = {
           <span>Add Budget</span>
         </div> 
       ),  
-      route: "/budgets/add"
+      route: "/budgets/new"
     } 
   ]
 }
